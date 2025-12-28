@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Catering Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand h2 {
+            color: white;
+            font-size: 1.8em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-pesan {
+            background: white !important;
+            color: #ff6b35 !important;
+            padding: 10px 25px !important;
+            border-radius: 25px !important;
+            font-weight: bold !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-pesan:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .page-header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, white, #fff8f3);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #ff6b35;
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ff6b35, #f7931e);
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .image-placeholder h3 {
+            font-size: 5em;
+            margin-bottom: 20px;
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.2));
+        }
+
+        .image-placeholder p {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* Vision Mission */
+        .vision-mission {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .vm-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .vm-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .vm-card h3 {
+            color: #ff6b35;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .vm-card p {
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .vm-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vm-card ul li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .vm-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        /* Why Choose */
+        .why-choose {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #ff6b35;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ff6b35, #f7931e);
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fff4e6 0%, #ffe8d1 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b35;
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .feature-card h3 {
+            color: #ff6b35;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #fff8f3, white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+            transition: all 0.3s;
+            border: 2px solid #ffe8d1;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.2);
+            border-color: #ff6b35;
+        }
+
+        .team-avatar {
+            font-size: 5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .team-card h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: #ff6b35;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .team-card p:last-child {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Certificates */
+        .certificates-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+
+        .certificates-section .section-title {
+            color: white;
+        }
+
+        .certificates-section .section-title::after {
+            background: white;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .cert-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .cert-card h4 {
+            color: #ff6b35;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .cert-card p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, white, #fff8f3);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            color: #ff6b35;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .btn-light {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-light:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3,
+        .footer-col h4 {
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 1;
+            color: #ff6b35;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid,
+            .team-grid,
+            .cert-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .vm-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .team-grid,
+            .cert-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>🍽️ Catering Premium</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="paket.html">Paket</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="testimoni.html">Testimoni</a></li>
+                <li><a href="tentang.html" class="active">Tentang Kami</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+                <li><a href="pesan.html" class="btn-pesan">Pesan Sekarang</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Tentang Kami</h1>
+        <p>Mengenal lebih dekat Catering Premium</p>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Selamat Datang di Catering Premium</h2>
+                    <p>
+                        <strong>Catering Premium</strong> adalah penyedia layanan catering profesional yang 
+                        telah berpengalaman lebih dari 10 tahun melayani berbagai jenis acara di Yogyakarta 
+                        dan sekitarnya. Kami berkomitmen untuk memberikan pengalaman kuliner terbaik dengan 
+                        cita rasa yang istimewa dan pelayanan yang memuaskan.
+                    </p>
+                    <p>
+                        Didirikan pada tahun 2014, kami telah melayani lebih dari 1500 acara mulai dari 
+                        pernikahan, acara kantor, seminar, ulang tahun, hingga syukuran keluarga. Kepuasan 
+                        pelanggan adalah prioritas utama kami, dan hal ini tercermin dari testimoni positif 
+                        yang terus kami terima.
+                    </p>
+                    <p>
+                        Dengan tim chef berpengalaman dan dedikasi tinggi, kami selalu menggunakan bahan 
+                        berkualitas premium untuk menghasilkan hidangan yang tidak hanya lezat, tetapi juga 
+                        sehat dan higienis.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <h3>🏆</h3>
+                        <p>10+ Tahun Pengalaman</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Mission -->
+    <section class="vision-mission">
+        <div class="container">
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <div class="vm-icon">🎯</div>
+                    <h3>Visi Kami</h3>
+                    <p>
+                        Menjadi penyedia layanan catering terdepan di Indonesia yang dikenal dengan 
+                        kualitas makanan premium, pelayanan profesional, dan harga yang kompetitif.
+                    </p>
+                </div>
+                <div class="vm-card">
+                    <div class="vm-icon">💫</div>
+                    <h3>Misi Kami</h3>
+                    <ul>
+                        <li>Menyajikan hidangan berkualitas tinggi dengan cita rasa terbaik</li>
+                        <li>Memberikan pelayanan profesional dan tepat waktu</li>
+                        <li>Menjaga higienitas dan keamanan pangan</li>
+                        <li>Terus berinovasi dalam menu dan layanan</li>
+                        <li>Memberikan harga yang terjangkau tanpa mengurangi kualitas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Mengapa Memilih Catering Premium?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3>Chef Profesional</h3>
+                    <p>Tim chef kami memiliki pengalaman puluhan tahun di industri kuliner dan selalu 
+                    berkomitmen menghasilkan hidangan terbaik.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🥗</div>
+                    <h3>Bahan Berkualitas</h3>
+                    <p>Kami hanya menggunakan bahan-bahan segar dan berkualitas premium yang dipilih 
+                    langsung dari supplier terpercaya.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧼</div>
+                    <h3>Standar Kebersihan</h3>
+                    <p>Dapur dan proses memasak kami memenuhi standar kebersihan dan keamanan pangan 
+                    yang ketat sesuai regulasi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Harga Kompetitif</h3>
+                    <p>Kami menawarkan berbagai paket dengan harga yang bersaing tanpa mengurangi 
+                    kualitas dan porsi makanan.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Menu Beragam</h3>
+                    <p>Ratusan pilihan menu tersedia, mulai dari masakan tradisional hingga modern, 
+                    serta menu custom sesuai permintaan.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Pengiriman Tepat Waktu</h3>
+                    <p>Sistem logistik yang terorganisir memastikan pesanan Anda tiba tepat waktu 
+                    sesuai jadwal acara.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Pelayanan Ramah</h3>
+                    <p>Customer service dan pramusaji kami siap melayani dengan ramah dan profesional 
+                    untuk kepuasan Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Terpercaya</h3>
+                    <p>Lebih dari 1500 acara telah kami layani dengan tingkat kepuasan pelanggan 
+                    mencapai 98%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Tim Kami</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍🍳</div>
+                    <h3>Chef Bambang Suharto</h3>
+                    <p class="team-role">Executive Chef</p>
+                    <p>Pengalaman 25 tahun di kuliner Nusantara dan internasional</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💼</div>
+                    <h3>Siti Aminah</h3>
+                    <p class="team-role">Operations Manager</p>
+                    <p>Mengelola operasional dan memastikan kepuasan pelanggan</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3>Andi Wijaya</h3>
+                    <p class="team-role">Marketing Manager</p>
+                    <p>Menangani komunikasi dan kemitraan bisnis</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍🍳</div>
+                    <h3>Chef Linda Kusuma</h3>
+                    <p class="team-role">Pastry Chef</p>
+                    <p>Spesialis dessert dan kue-kue modern</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates -->
+    <section class="certificates-section">
+        <div class="container">
+            <h2 class="section-title">Sertifikasi & Penghargaan</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">🏅</div>
+                    <h4>Sertifikat Halal</h4>
+                    <p>MUI No. 123456789</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">✓</div>
+                    <h4>PIRT</h4>
+                    <p>Nomor: 209XXXXXXXXXX</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🏆</div>
+                    <h4>Best Catering 2023</h4>
+                    <p>Yogyakarta Wedding Awards</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">⭐</div>
+                    <h4>ISO 9001:2015</h4>
+                    <p>Quality Management System</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Siap Bekerja Sama dengan Kami?</h2>
+            <p>Hubungi kami untuk konsultasi gratis mengenai kebutuhan catering Anda</p>
+            <a href="kontak.html" class="btn btn-light">Hubungi Kami</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Catering Premium</h3>
+                    <p>Menyediakan layanan catering berkualitas untuk berbagai acara Anda.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="menu.html">Daftar Menu</a></li>
+                        <li><a href="paket.html">Paket Catering</a></li>
+                        <li><a href="galeri.html">Galeri</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Perusahaan</h4>
+                    <ul>
+                        <li><a href="tentang.html">Tentang Kami</a></li>
+                        <li><a href="testimoni.html">Testimoni</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hubungi Kami</h4>
+                    <p>📞 (021) 1234-5678</p>
+                    <p>✉️ info@cateringpremium.com</p>
+                    <p>📍 Yogyakarta, Indonesia</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Catering Premium. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

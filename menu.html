@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Catering</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .page-title {
+      text-align: center;
+      color: #ff6b35;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      color: #f7931e;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #ff6b35;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .menu-item {
+      background: white;
+      padding: 0;
+      border-radius: 10px;
+      border: 2px solid #ffe0b2;
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+      border-color: #ff6b35;
+    }
+
+    .menu-item-image {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, #fff4e6 0%, #ffe0b2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-item-image::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 107, 53, 0.05) 0px,
+        rgba(255, 107, 53, 0.05) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+    }
+
+    .menu-item-content {
+      padding: 15px;
+      background: linear-gradient(135deg, #fff4e6 0%, #ffe0b2 100%);
+    }
+
+    .menu-item h4 {
+      color: #333;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+
+    .paket-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .paket-card {
+      background: white;
+      color: #333;
+      padding: 0;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      overflow: hidden;
+      border: 3px solid #ffe0b2;
+    }
+
+    .paket-card:hover {
+      transform: scale(1.05);
+      border-color: #ff6b35;
+    }
+
+    .paket-card-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .paket-card-image::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(255,255,255,0.1) 0px,
+        rgba(255,255,255,0.1) 15px,
+        transparent 15px,
+        transparent 30px
+      );
+    }
+
+    .paket-card-content {
+      padding: 30px;
+    }
+
+    .paket-card h3 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #ff6b35;
+    }
+
+    .paket-card p {
+      line-height: 1.8;
+      font-size: 1.05em;
+      color: #666;
+    }
+
+    .prasmanan-info {
+      background: #fff4e6;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .prasmanan-info h4 {
+      color: #ff6b35;
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+
+    .prasmanan-info ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .prasmanan-info li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .prasmanan-info li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #ff6b35;
+      font-weight: bold;
+    }
+
+    .btn-pesan {
+      display: block;
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+      color: white;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 25px;
+      margin-top: 15px;
+      transition: all 0.3s;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .btn-pesan:hover {
+      background: linear-gradient(135deg, #f7931e 0%, #ff6b35 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      .page-title {
+        font-size: 1.8em;
+      }
+
+      .section-title {
+        font-size: 1.4em;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="page-title">Menu Catering</h1>
+
+  <!-- Prasmanan Section -->
+  <div class="section">
+    <h2 class="section-title">Prasmanan</h2>
+    
+    <div class="prasmanan-info">
+      <h4>Pilihan Paket Prasmanan:</h4>
+      <ul>
+        <li>Paket 1: 100 Porsi</li>
+        <li>Paket 2: 300 Porsi</li>
+        <li>Paket 3: 500 Porsi</li>
+      </ul>
+    </div>
+
+    <h3 style="color: #f7931e; margin: 30px 0 15px 0; font-size: 1.4em;">Pilihan Lauk</h3>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-item-image">🍗</div>
+        <div class="menu-item-content"><h4>Ayam Goreng</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🍗</div>
+        <div class="menu-item-content"><h4>Ayam Bakar</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🥔</div>
+        <div class="menu-item-content"><h4>Perkedel</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🍖</div>
+        <div class="menu-item-content"><h4>Nugget</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🥘</div>
+        <div class="menu-item-content"><h4>Orek Tempe</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🍜</div>
+        <div class="menu-item-content"><h4>Oseng Mie</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🍜</div>
+        <div class="menu-item-content"><h4>Oseng Bihun</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🍖</div>
+        <div class="menu-item-content"><h4>Daging Rendang</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🥚</div>
+        <div class="menu-item-content"><h4>Telur Balado</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🐟</div>
+        <div class="menu-item-content"><h4>Ikan Tongkol Balado</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🐟</div>
+        <div class="menu-item-content"><h4>Ikan Kembung Goreng/Bakar</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🐟</div>
+        <div class="menu-item-content"><h4>Ikan Nila Goreng/Bakar</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🦐</div>
+        <div class="menu-item-content"><h4>Udang Sambel Petai</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🍖</div>
+        <div class="menu-item-content"><h4>Dendeng Balado</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🥣</div>
+        <div class="menu-item-content"><h4>Sayur Sop</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🥣</div>
+        <div class="menu-item-content"><h4>Sayur Soto</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🥬</div>
+        <div class="menu-item-content"><h4>Sayur Nangka Gemuk</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🥗</div>
+        <div class="menu-item-content"><h4>Urap</h4></div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-image">🍗</div>
+        <div class="menu-item-content"><h4>Opor Ayam</h4></div>
+      </div>
+    </div>
+
+    <h3 style="color: #f7931e; margin: 30px 0 15px 0; font-size: 1.4em;">Pilihan Sambel</h3>
+    <div class="menu-grid">
+      <div class="menu-item"><h4>🌶️ Sambel Terasi</h4></div>
+      <div class="menu-item"><h4>🌶️ Sambel Bawang</h4></div>
+      <div class="menu-item"><h4>🌶️ Sambel Tomat</h4></div>
+      <div class="menu-item"><h4>🌶️ Sambel Ijo</h4></div>
+      <div class="menu-item"><h4>🌶️ Sambel Macan</h4></div>
+      <div class="menu-item"><h4>🌶️ Sambel Matah</h4></div>
+    </div>
+  </div>
+
+  <!-- Paket Nasi Box Section -->
+  <div class="section">
+    <h2 class="section-title">Paket Nasi Box</h2>
+    <div class="paket-grid">
+      <div class="paket-card">
+        <h3>📦 Paket 1</h3>
+        <p>
+          🍚 Nasi<br>
+          🍗 Ayam Goreng<br>
+          🥬 Sayur Nangka<br>
+          🌶️ Sambel Bawang
+        </p>
+        <a href="pesan.html" class="btn-pesan">Pesan Sekarang</a>
+      </div>
+
+      <div class="paket-card">
+        <h3>📦 Paket 2</h3>
+        <p>
+          🍚 Nasi<br>
+          🍗 Ayam Bakar<br>
+          🥣 Sayur Sop<br>
+          🌶️ Sambel Tomat
+        </p>
+        <a href="pesan.html" class="btn-pesan">Pesan Sekarang</a>
+      </div>
+
+      <div class="paket-card">
+        <h3>📦 Paket 3</h3>
+        <p>
+          🍚 Nasi<br>
+          🍖 Nugget<br>
+          🥣 Soto<br>
+          🌶️ Sambel Ijo
+        </p>
+        <a href="pesan.html" class="btn-pesan">Pesan Sekarang</a>
+      </div>
+
+      <div class="paket-card">
+        <h3>📦 Paket 4</h3>
+        <p>
+          🍚 Nasi<br>
+          🍖 Daging Rendang<br>
+          🍜 Oseng Mie<br>
+        </p>
+        <a href="pesan.html" class="btn-pesan">Pesan Sekarang</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
